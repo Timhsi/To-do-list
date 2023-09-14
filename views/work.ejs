@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+<div class="list-title container justify-content-around">
+    <h1>To-Do</h1>
+    <h2>Work List</h2>
+</div>
+
+<!-- Outer container for the list -->
+<div class="list-display">
+  <% if (locals.toDoWork) { %>
+    <% for (var i = 0; i < toDoWork.length; i++) { %>
+          <!-- This is the individual list box -->
+          <div class="list-group container col-4">
+            <label class="list-group-item d-flex gap-3 text-dark">
+              <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+              <span class="pt-1 form-checked-content">
+                <h5><%= toDoWork[i]%></h5>
+              </span>
+            </label>
+            
+            
+          </div>
+        <% } %>
+    <% } %>
+  
+  <!-- Add task action is done using this form -->
+  <form action="/addWork" method="POST" class="form-input-div container col-4">
+    <div class="input-field-div  py-3">
+      <input type="text" name="list-item-work" class = "form-control " placeholder="Type something & press ↵ Enter">
+    </div>
+    <div class="btn-div">
+      <a href="/work"><button type="submit" name="list" class="btn btn-outline-dark rounded-pill px-3"><i class="fa-solid fa-plus add-icon"></i></button></a>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer.ejs') %>
